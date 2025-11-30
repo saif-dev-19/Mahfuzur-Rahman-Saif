@@ -1,10 +1,16 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Server, Database, Code, Cloud, GitBranch, Boxes } from 'lucide-react';
+import { Server, Database,Languages , Code, Cloud, GitBranch, Boxes } from 'lucide-react';
 import SectionTitle from './SectionTitle';
 
 const Skills = () => {
   const skillCategories = [
+    {
+      title: 'Languages',
+      icon: Languages,
+      skills: [ 'C','C++','Python','Dart'],
+      color: 'from-blue-500 to-cyan-500',
+    },
     {
       title: 'Backend',
       icon: Server,
@@ -12,17 +18,18 @@ const Skills = () => {
       color: 'from-blue-500 to-cyan-500',
     },
     {
-      title: 'Databases',
-      icon: Database,
-      skills: ['PostgreSQL','MySQL', 'Sqlite','Supabase'],
-      color: 'from-green-500 to-emerald-500',
-    },
-    {
       title: 'Frontend',
       icon: Code,
       skills: ['React', 'JavaScript', 'HTML/CSS', 'TailwindCSS'],
       color: 'from-purple-500 to-pink-500',
     },
+    {
+      title: 'Databases',
+      icon: Database,
+      skills: ['PostgreSQL','MySQL', 'Sqlite','Supabase'],
+      color: 'from-green-500 to-emerald-500',
+    },
+    
     // {
     //   title: 'Cloud & DevOps',
     //   icon: Cloud,

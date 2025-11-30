@@ -74,7 +74,7 @@ const Hero = () => {
                 Mahfuzur Rahman Saif
               </h1>
               <h2 className="text-2xl md:text-3xl text-text/80">
-                Web Developer
+                Fullstack-Developer
               </h2>
             </motion.div>
 
