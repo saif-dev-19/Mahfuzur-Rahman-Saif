@@ -100,13 +100,13 @@ const Hero = () => {
                 Get In Touch
               </motion.a>
               <motion.a
-                href=""
+                href="https://drive.google.com/file/d/1vM2WeXP55HwXJbMZU1acTwjJcU2fFAnM/view?usp=sharing"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="px-8 py-3 bg-secondary text-text rounded-lg font-medium hover:bg-secondary/80 transition-colors flex items-center gap-2 border border-accent/30"
               >
-                <Download size={20} />
-                Download Resume
+                <Download size={20}  />
+                Get Resume
               </motion.a>
             </motion.div>
 
@@ -158,7 +158,7 @@ const Hero = () => {
                 <div className="w-full h-full hidden items-center justify-center bg-secondary/50 backdrop-blur-sm">
                   <div className="text-center space-y-4">
                     <div className="w-32 h-32 mx-auto bg-accent/20 rounded-full flex items-center justify-center">
-                      <span className="text-6xl">👨‍💻</span>
+                      <span className="text-6xl"></span>
                     </div>
                     <p className="text-text/50 text-sm">Add your photo to /public/profile.jpg</p>
                   </div>
