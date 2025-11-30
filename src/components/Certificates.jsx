@@ -6,7 +6,7 @@ import phitronCert from '../media/certificate/phitron.jpg';
 import python from '../media/certificate/python.jpg';
 import ILC from '../media/certificate/ILC.jpg';
 import flutter from '../media/certificate/flutter.jpg';
-import icpc from '../media/certificate/ICPC.jpg';
+import icpc from '../media/certificate/icpc.jpg';
 
 
 const Certificates = () => {
