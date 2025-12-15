@@ -26,7 +26,27 @@ const Hero = () => {
 
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16">
-      {/* Animated Background */}
+      {/* Heavy Coding Effects Background */}
+      <div className="absolute inset-0 overflow-hidden">
+        {/* Terminal Grid */}
+        <div className="absolute inset-0 opacity-20">
+          <div className="terminal-grid"></div>
+        </div>
+        
+       
+
+        {/* Animated Circuit Lines */}
+        <div className="circuit-lines">
+          <div className="circuit-line horizontal" style={{ top: '20%', left: '0%', width: '40%' }}></div>
+          <div className="circuit-line vertical" style={{ top: '20%', left: '40%', height: '30%' }}></div>
+          <div className="circuit-line horizontal" style={{ top: '50%', right: '0%', width: '35%' }}></div>
+          <div className="circuit-line vertical" style={{ top: '30%', right: '35%', height: '40%' }}></div>
+        </div>
+
+        {/* Glitch Effects */}
+        <div className="glitch-overlay"></div>
+      </div>
+      {/* Enhanced Animated Background */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
           animate={{
@@ -52,6 +72,18 @@ const Hero = () => {
           }}
           className="absolute bottom-1/4 -right-20 w-96 h-96 bg-accent/10 rounded-full blur-3xl"
         />
+        <motion.div
+          animate={{
+            scale: [1, 1.1, 1],
+            opacity: [0.3, 0.6, 0.3],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
+          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-cyber-blue/5 rounded-full blur-3xl"
+        />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -65,17 +97,24 @@ const Hero = () => {
           <div className="space-y-6">
             <motion.div variants={itemVariants} className="space-y-2">
               <motion.p
-                className="text-accent text-lg font-medium"
+                className="text-accent text- font-bold"
                 whileHover={{ x: 10 }}
               >
                 Hi, I'm
               </motion.p>
-              <h1 className="text-5xl md:text-7xl font-bold text-text">
-                Mahfuzur Rahman Saif
+              <h1 className="text-4xl md:text-4xl font-bold terminal-text">
+                
+                <span className="gradient-text typing-animation">Mahfuzur Rahman Saif</span>
               </h1>
-              <h2 className="text-2xl md:text-3xl text-text/80">
-                Fullstack-Developer
+              <h2 className="text-2xl md:text-3xl text-text/80 terminal-text mt-4">
+                <span className="code-keyword">const</span> <span className="code-variable">role</span> = 
+                <span className="text-accent"> "</span>
+                <span className="code-string typing-animation-2">Fullstack Developer</span>
+                <span className="text-accent">";</span>
               </h2>
+              <div className="terminal-text text-lg mt-2 opacity-70">
+                <span className="code-comment">/* Backend-Focused • Full-Stack Solutions */</span>
+              </div>
             </motion.div>
 
             <motion.p
@@ -84,9 +123,7 @@ const Hero = () => {
             >
               Full-stack developer experienced in React, Django, DRF, REST APIs, PostgreSQL, and scalable UI
               development. Strong foundation in backend architecture, and clean coding principles. Passionate
-              about building efficient, maintainable systems and continuously learning new technologies. Seeking
-              challenging full-stack opportunities in a dynamic environment where I can contribute to the development of
-              high-quality, scalable web applications
+              about building efficient, maintainable systems and continuously learning new technologies.
             </motion.p>
 
             <motion.div variants={itemVariants} className="flex flex-wrap gap-4">

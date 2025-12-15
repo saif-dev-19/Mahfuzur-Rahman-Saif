@@ -36,10 +36,28 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <motion.div
-            whileHover={{ scale: 1.05 }}
-            className="text-2xl font-bold text-accent"
+            whileHover={{ 
+              scale: 1.05,
+              textShadow: "0 0 20px rgba(6, 182, 212, 0.8)"
+            }}
+            className="relative text-2xl font-bold cursor-pointer select-none"
+            style={{
+              background: 'linear-gradient(45deg, #06b6d4, #8b5cf6, #3b82f6)',
+              backgroundSize: '300% 300%',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              animation: 'gradientShift 4s ease-in-out infinite',
+              textShadow: '0 0 30px rgba(6, 182, 212, 0.5)',
+              fontFamily: 'monospace',
+              letterSpacing: '0.05em'
+            }}
           >
-            Mah<span className='text-gray'>fuz</span>
+            Mahfuz
+            <div 
+              className="absolute -inset-1 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 rounded-lg blur opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              style={{ zIndex: -1 }}
+            />
           </motion.div>
 
           {/* Desktop Menu */}

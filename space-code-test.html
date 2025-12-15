@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Code Rain + Heavy Hero Effects Test</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(to bottom, #000000, #1a1a1a, #000000);
+            color: #E9EAEC;
+            font-family: 'Fira Code', monospace;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Space Background with Stars */
+        .space-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -10;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.3; }
+            100% { opacity: 1; }
+        }
+
+        /* Code Rain */
+        .code-rain {
+            position: fixed;
+            inset: 0;
+            z-index: -5;
+            pointer-events: none;
+        }
+
+        .falling-code {
+            position: absolute;
+            font-family: 'Fira Code', monospace;
+            font-weight: bold;
+            color: #00FF41;
+            opacity: 0.7;
+            animation: codeRainFall 12s linear infinite;
+            text-shadow: 0 0 10px currentColor;
+        }
+
+        .falling-code.blue {
+            color: #4F8CFF;
+        }
+
+        @keyframes codeRainFall {
+            0% { 
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 0;
+            }
+            5% { opacity: 1; }
+            95% { opacity: 0.7; }
+            100% { 
+                transform: translateY(calc(100vh + 200px)) rotate(10deg);
+                opacity: 0;
+            }
+        }
+
+        /* Hero Section Effects */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 2rem;
+        }
+
+        .terminal-grid {
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(79, 140, 255, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(79, 140, 255, 0.1) 1px, transparent 1px);
+            background-size: 30px 30px;
+            animation: gridMove 20s linear infinite;
+            opacity: 0.2;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(30px, 30px); }
+        }
+
+        .code-block {
+            position: absolute;
+            background: rgba(15, 15, 16, 0.9);
+            border: 1px solid rgba(79, 140, 255, 0.3);
+            border-radius: 8px;
+            padding: 12px 16px;
+            font-size: 12px;
+            line-height: 1.4;
+            backdrop-filter: blur(10px);
+            animation: floatCodeBlock 15s ease-in-out infinite;
+            box-shadow: 0 0 20px rgba(79, 140, 255, 0.2);
+        }
+
+        @keyframes floatCodeBlock {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.8; }
+            25% { transform: translateY(-10px) rotate(1deg); opacity: 1; }
+            50% { transform: translateY(-20px) rotate(-1deg); opacity: 0.9; }
+            75% { transform: translateY(-5px) rotate(0.5deg); opacity: 0.95; }
+        }
+
+        .code-keyword { color: #4F8CFF; font-weight: 600; }
+        .code-variable { color: #E9EAEC; }
+        .code-string { color: #39FF14; }
+        .code-function { color: #FFD700; }
+        .code-comment { color: #6A9955; font-style: italic; }
+
+        .circuit-line {
+            position: absolute;
+            background: linear-gradient(90deg, transparent, #4F8CFF, transparent);
+            opacity: 0.6;
+            height: 2px;
+            animation: circuitFlow 8s ease-in-out infinite;
+        }
+
+        @keyframes circuitFlow {
+            0%, 100% { opacity: 0.3; box-shadow: 0 0 5px #4F8CFF; }
+            50% { opacity: 1; box-shadow: 0 0 20px #4F8CFF; }
+        }
+
+        .typing-animation {
+            overflow: hidden;
+            border-right: 3px solid #4F8CFF;
+            white-space: nowrap;
+            animation: typing 4s steps(20, end), blink-caret 1s step-end infinite;
+            animation-delay: 0.5s;
+            width: 0;
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: #4F8CFF; }
+        }
+
+        .gradient-text {
+            background: linear-gradient(45deg, #4F8CFF, #00D4FF, #39FF14);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 4s ease-in-out infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 800px;
+        }
+
+        .indicator {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #00FF41;
+            color: #000;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <div class="indicator">🚀 SPACE CODE RAIN + HEAVY HERO EFFECTS</div>
+
+    <!-- Space Background -->
+    <div class="space-bg">
+        <!-- Stars -->
+        <div class="star" style="left: 10%; top: 20%; width: 2px; height: 2px; animation-delay: 0s;"></div>
+        <div class="star" style="left: 30%; top: 40%; width: 1px; height: 1px; animation-delay: 1s;"></div>
+        <div class="star" style="left: 50%; top: 60%; width: 3px; height: 3px; animation-delay: 2s;"></div>
+        <div class="star" style="left: 70%; top: 30%; width: 2px; height: 2px; animation-delay: 3s;"></div>
+        <div class="star" style="left: 90%; top: 50%; width: 1px; height: 1px; animation-delay: 4s;"></div>
+        <div class="star" style="left: 15%; top: 70%; width: 2px; height: 2px; animation-delay: 0.5s;"></div>
+        <div class="star" style="left: 85%; top: 15%; width: 1px; height: 1px; animation-delay: 1.5s;"></div>
+    </div>
+
+    <!-- Code Rain -->
+    <div class="code-rain">
+        <div class="falling-code" style="left: 5%; font-size: 16px; animation-delay: 0s;">const</div>
+        <div class="falling-code blue" style="left: 10%; font-size: 14px; animation-delay: 1s;">function</div>
+        <div class="falling-code" style="left: 15%; font-size: 18px; animation-delay: 2s;">React</div>
+        <div class="falling-code blue" style="left: 20%; font-size: 16px; animation-delay: 0.5s;">Python</div>
+        <div class="falling-code" style="left: 25%; font-size: 15px; animation-delay: 1.5s;">Django</div>
+        <div class="falling-code blue" style="left: 30%; font-size: 17px; animation-delay: 2.5s;">API</div>
+        <div class="falling-code" style="left: 35%; font-size: 14px; animation-delay: 0.8s;">JSON</div>
+        <div class="falling-code blue" style="left: 40%; font-size: 16px; animation-delay: 1.8s;">SQL</div>
+        <div class="falling-code" style="left: 45%; font-size: 15px; animation-delay: 2.8s;">GET</div>
+        <div class="falling-code blue" style="left: 50%; font-size: 18px; animation-delay: 0.3s;">POST</div>
+        <div class="falling-code" style="left: 55%; font-size: 14px; animation-delay: 1.3s;">{}</div>
+        <div class="falling-code blue" style="left: 60%; font-size: 16px; animation-delay: 2.3s;">[]</div>
+        <div class="falling-code" style="left: 65%; font-size: 17px; animation-delay: 0.7s;">async</div>
+        <div class="falling-code blue" style="left: 70%; font-size: 15px; animation-delay: 1.7s;">await</div>
+        <div class="falling-code" style="left: 75%; font-size: 16px; animation-delay: 2.7s;">import</div>
+        <div class="falling-code blue" style="left: 80%; font-size: 14px; animation-delay: 0.2s;">export</div>
+        <div class="falling-code" style="left: 85%; font-size: 18px; animation-delay: 1.2s;">class</div>
+        <div class="falling-code blue" style="left: 90%; font-size: 15px; animation-delay: 2.2s;">return</div>
+        <div class="falling-code" style="left: 95%; font-size: 16px; animation-delay: 0.9s;">HTTP</div>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <!-- Terminal Grid -->
+        <div class="terminal-grid"></div>
+        
+        <!-- Floating Code Blocks -->
+        <div class="code-block" style="top: 10%; left: 5%; animation-delay: 0s;">
+            <span class="code-comment">// Backend Developer</span><br/>
+            <span class="code-keyword">const</span> <span class="code-variable">skills</span> = [<br/>
+            &nbsp;&nbsp;<span class="code-string">'Python'</span>,<br/>
+            &nbsp;&nbsp;<span class="code-string">'Django'</span>,<br/>
+            &nbsp;&nbsp;<span class="code-string">'React'</span><br/>
+            ];
+        </div>
+        
+        <div class="code-block" style="top: 60%; right: 5%; animation-delay: 2s;">
+            <span class="code-keyword">function</span> <span class="code-function">buildAmazingApps</span>() {<br/>
+            &nbsp;&nbsp;<span class="code-keyword">return</span> <span class="code-string">'Scalable Solutions'</span>;<br/>
+            }
+        </div>
+
+        <!-- Circuit Lines -->
+        <div class="circuit-line" style="top: 20%; left: 0%; width: 40%;"></div>
+        <div class="circuit-line" style="top: 50%; right: 0%; width: 35%;"></div>
+
+        <!-- Main Content -->
+        <div class="content">
+            <h1 style="font-size: 3rem; margin-bottom: 1rem;">
+                <span class="code-comment">// </span>
+                <span class="gradient-text typing-animation">Mahfuzur Rahman Saif</span>
+            </h1>
+            <h2 style="font-size: 1.5rem; margin-bottom: 2rem;">
+                <span class="code-keyword">const</span> <span class="code-variable">role</span> = 
+                <span style="color: #4F8CFF;"> "</span>
+                <span class="code-string">Fullstack Developer</span>
+                <span style="color: #4F8CFF;">";</span>
+            </h2>
+            <div style="opacity: 0.7; margin-bottom: 2rem;">
+                <span class="code-comment">/* Backend-Focused • Full-Stack Solutions */</span>
+            </div>
+            <p style="font-size: 1.1rem; line-height: 1.6; opacity: 0.8;">
+                Full-stack developer experienced in React, Django, DRF, REST APIs, PostgreSQL, and scalable UI development. 
+                Strong foundation in backend architecture, and clean coding principles.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        console.log('🚀 Space Code Rain + Heavy Hero Effects Test');
+        console.log('✅ You should see:');
+        console.log('   - Twinkling stars in space background');
+        console.log('   - Falling code rain (green & blue)');
+        console.log('   - Floating code blocks');
+        console.log('   - Circuit lines with glow effects');
+        console.log('   - Typing animation on name');
+        console.log('   - Terminal grid background');
+    </script>
+</body>
+</html>

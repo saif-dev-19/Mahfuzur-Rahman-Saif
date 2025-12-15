@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Background Test</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Fira Code', monospace;
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        /* SPACE BACKGROUND - GUARANTEED TO WORK */
+        .space-background {
+            position: fixed;
+            inset: 0;
+            background: 
+                radial-gradient(ellipse at top, #1a1a2e 0%, #16213e 25%, #0f0f23 50%, #000000 100%),
+                linear-gradient(180deg, #000000 0%, #0a0a0a 50%, #1a1a1a 100%);
+            overflow: hidden;
+            z-index: -10;
+        }
+
+        /* Stars Layers */
+        .stars-small {
+            position: absolute;
+            inset: 0;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, #fff, transparent),
+                radial-gradient(2px 2px at 40px 70px, #fff, transparent),
+                radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+                radial-gradient(1px 1px at 130px 80px, #fff, transparent),
+                radial-gradient(2px 2px at 160px 30px, #fff, transparent);
+            background-repeat: repeat;
+            background-size: 200px 100px;
+            animation: starsMove 50s linear infinite;
+            opacity: 0.8;
+        }
+
+        .stars-medium {
+            position: absolute;
+            inset: 0;
+            background-image: 
+                radial-gradient(3px 3px at 30px 50px, #4F8CFF, transparent),
+                radial-gradient(2px 2px at 80px 20px, #00D4FF, transparent),
+                radial-gradient(3px 3px at 120px 90px, #39FF14, transparent);
+            background-repeat: repeat;
+            background-size: 300px 200px;
+            animation: starsMove 80s linear infinite reverse;
+            opacity: 0.6;
+        }
+
+        .stars-large {
+            position: absolute;
+            inset: 0;
+            background-image: 
+                radial-gradient(4px 4px at 50px 60px, #fff, transparent),
+                radial-gradient(3px 3px at 150px 40px, #4F8CFF, transparent);
+            background-repeat: repeat;
+            background-size: 400px 300px;
+            animation: starsMove 120s linear infinite;
+            opacity: 0.4;
+        }
+
+        @keyframes starsMove {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-100px); }
+        }
+
+        /* Nebula Effects */
+        .nebula-blue {
+            position: absolute;
+            top: 10%;
+            left: 20%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(79, 140, 255, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: nebulaPulse 8s ease-in-out infinite;
+        }
+
+        .nebula-purple {
+            position: absolute;
+            top: 60%;
+            right: 15%;
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(147, 51, 234, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: nebulaPulse 12s ease-in-out infinite reverse;
+        }
+
+        .nebula-green {
+            position: absolute;
+            bottom: 20%;
+            left: 10%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(57, 255, 20, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: nebulaPulse 10s ease-in-out infinite;
+            animation-delay: 4s;
+        }
+
+        @keyframes nebulaPulse {
+            0%, 100% {
+                opacity: 0.3;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.8;
+                transform: scale(1.2);
+            }
+        }
+
+        /* Code Rain */
+        .code-rain-element {
+            position: absolute;
+            font-family: 'Fira Code', monospace;
+            font-weight: bold;
+            font-size: 16px;
+            animation: codeRainFall 12s linear infinite;
+            text-shadow: 0 0 10px currentColor;
+            opacity: 0.8;
+        }
+
+        @keyframes codeRainFall {
+            0% { 
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 0;
+            }
+            5% {
+                opacity: 1;
+            }
+            95% {
+                opacity: 0.7;
+            }
+            100% { 
+                transform: translateY(calc(100vh + 200px)) rotate(10deg);
+                opacity: 0;
+            }
+        }
+
+        .indicator {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            background: #4F8CFF;
+            color: #fff;
+            padding: 8px 12px;
+            border-radius: 5px;
+            font-size: 12px;
+            font-weight: bold;
+            z-index: 1000;
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+            color: #E9EAEC;
+        }
+
+        .content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #4F8CFF, #00D4FF, #39FF14);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 4s ease-in-out infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="indicator">🌌 SPACE BACKGROUND TEST</div>
+
+    <!-- Space Background -->
+    <div class="space-background">
+        <!-- Stars Layers -->
+        <div class="stars-small"></div>
+        <div class="stars-medium"></div>
+        <div class="stars-large"></div>
+        
+        <!-- Nebula Effects -->
+        <div class="nebula-blue"></div>
+        <div class="nebula-purple"></div>
+        <div class="nebula-green"></div>
+    </div>
+
+    <!-- Code Rain -->
+    <div class="code-rain-element" style="left: 10%; color: #00FF41; animation-delay: 0s;">const</div>
+    <div class="code-rain-element" style="left: 20%; color: #4F8CFF; animation-delay: 1s;">function</div>
+    <div class="code-rain-element" style="left: 30%; color: #00FF41; animation-delay: 2s;">React</div>
+    <div class="code-rain-element" style="left: 40%; color: #4F8CFF; animation-delay: 0.5s;">Python</div>
+    <div class="code-rain-element" style="left: 50%; color: #00FF41; animation-delay: 1.5s;">Django</div>
+    <div class="code-rain-element" style="left: 60%; color: #4F8CFF; animation-delay: 2.5s;">API</div>
+    <div class="code-rain-element" style="left: 70%; color: #00FF41; animation-delay: 0.8s;">JSON</div>
+    <div class="code-rain-element" style="left: 80%; color: #4F8CFF; animation-delay: 1.8s;">SQL</div>
+    <div class="code-rain-element" style="left: 90%; color: #00FF41; animation-delay: 2.8s;">HTTP</div>
+
+    <!-- Content -->
+    <div class="content">
+        <div>
+            <h1>Space Background Working!</h1>
+            <p>You should see:</p>
+            <ul style="text-align: left; margin-top: 1rem;">
+                <li>🌌 Deep space gradient background</li>
+                <li>⭐ Multiple layers of moving stars</li>
+                <li>💫 Pulsing nebula effects (blue, purple, green)</li>
+                <li>🌧️ Falling code rain</li>
+                <li>✨ Animated gradient text</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        console.log('🌌 Space Background Test');
+        console.log('✅ You should see:');
+        console.log('   - Deep space gradient background');
+        console.log('   - Moving stars in multiple layers');
+        console.log('   - Pulsing nebula effects');
+        console.log('   - Falling code rain');
+    </script>
+</body>
+</html>

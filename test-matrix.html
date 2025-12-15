@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrix Rain Test</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #0a0a0a;
+            color: #E9EAEC;
+            font-family: 'Fira Code', monospace;
+            overflow: hidden;
+        }
+
+        /* Matrix Rain Animations */
+        @keyframes matrixFall {
+            0% { 
+                transform: translateY(-100px);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% { 
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+
+        @keyframes matrixGrid {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(30px, 30px); }
+        }
+
+        @keyframes matrixPulse {
+            0%, 100% { 
+                opacity: 0.05;
+                transform: scale(1);
+            }
+            50% { 
+                opacity: 0.15;
+                transform: scale(1.1);
+            }
+        }
+
+        .matrix-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .matrix-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(90deg, transparent 98%, rgba(0, 255, 65, 0.1) 100%),
+                linear-gradient(0deg, transparent 98%, rgba(0, 255, 65, 0.1) 100%);
+            background-size: 30px 30px;
+            animation: matrixGrid 20s linear infinite;
+            opacity: 0.3;
+        }
+
+        .matrix-char {
+            position: absolute;
+            color: #00FF41;
+            font-size: 16px;
+            font-family: 'Fira Code', monospace;
+            animation: matrixFall 15s linear infinite;
+        }
+
+        .matrix-pulse {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(0, 255, 65, 0.05) 0%, transparent 70%);
+            animation: matrixPulse 8s ease-in-out infinite;
+        }
+
+        .debug-indicator {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: rgba(0, 255, 65, 0.8);
+            color: #000;
+            padding: 8px 12px;
+            border-radius: 5px;
+            font-size: 12px;
+            font-family: monospace;
+            z-index: 9999;
+            font-weight: bold;
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            padding: 50px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #4F8CFF;
+        }
+
+        p {
+            font-size: 1.2rem;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <!-- Debug indicator -->
+    <div class="debug-indicator">✅ Matrix Active</div>
+
+    <!-- Matrix Rain Background -->
+    <div class="matrix-container">
+        <!-- Animated grid -->
+        <div class="matrix-grid"></div>
+        
+        <!-- Falling code elements -->
+        <div class="matrix-char" style="left: 5%; animation-delay: 0s; color: #4F8CFF;">const</div>
+        <div class="matrix-char" style="left: 10%; animation-delay: 1s; color: #00FF41;">function</div>
+        <div class="matrix-char" style="left: 15%; animation-delay: 2s; color: #4F8CFF;">=></div>
+        <div class="matrix-char" style="left: 20%; animation-delay: 0.5s; color: #00FF41;">useState</div>
+        <div class="matrix-char" style="left: 25%; animation-delay: 1.5s; color: #4F8CFF;">import</div>
+        <div class="matrix-char" style="left: 30%; animation-delay: 2.5s; color: #00FF41;">class</div>
+        <div class="matrix-char" style="left: 35%; animation-delay: 0.8s; color: #4F8CFF;">def</div>
+        <div class="matrix-char" style="left: 40%; animation-delay: 1.8s; color: #00FF41;">return</div>
+        <div class="matrix-char" style="left: 45%; animation-delay: 2.8s; color: #4F8CFF;">API</div>
+        <div class="matrix-char" style="left: 50%; animation-delay: 0.3s; color: #00FF41;">JSON</div>
+        <div class="matrix-char" style="left: 55%; animation-delay: 1.3s; color: #4F8CFF;">SELECT</div>
+        <div class="matrix-char" style="left: 60%; animation-delay: 2.3s; color: #00FF41;">FROM</div>
+        <div class="matrix-char" style="left: 65%; animation-delay: 0.7s; color: #4F8CFF;">{}</div>
+        <div class="matrix-char" style="left: 70%; animation-delay: 1.7s; color: #00FF41;">[]</div>
+        <div class="matrix-char" style="left: 75%; animation-delay: 2.7s; color: #4F8CFF;">&&</div>
+        <div class="matrix-char" style="left: 80%; animation-delay: 0.2s; color: #00FF41;">||</div>
+        <div class="matrix-char" style="left: 85%; animation-delay: 1.2s; color: #4F8CFF;">async</div>
+        <div class="matrix-char" style="left: 90%; animation-delay: 2.2s; color: #00FF41;">await</div>
+        <div class="matrix-char" style="left: 95%; animation-delay: 0.9s; color: #4F8CFF;">HTTP</div>
+
+        <!-- Pulse effect -->
+        <div class="matrix-pulse"></div>
+    </div>
+
+    <!-- Main content -->
+    <div class="content">
+        <h1>Code Rain Test</h1>
+        <p>If you can see falling code elements behind this text, the Code Rain effect is working!</p>
+        <p>You should see programming keywords like: const, function, =>, useState, API, JSON, etc.</p>
+        <p>Colors: Blue (#4F8CFF) and Green (#00FF41) mixed together</p>
+    </div>
+
+    <script>
+        console.log('✅ Matrix Rain Test Page Loaded');
+        console.log('🎯 You should see:');
+        console.log('   - Green "Matrix Active" badge in top-right');
+        console.log('   - Falling green characters (0, 1, Japanese chars)');
+        console.log('   - Animated grid pattern');
+        console.log('   - Pulsing background effect');
+    </script>
+</body>
+</html>

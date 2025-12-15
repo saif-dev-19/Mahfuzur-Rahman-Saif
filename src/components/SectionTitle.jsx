@@ -11,17 +11,17 @@ const SectionTitle = ({ title, subtitle, align = 'center' }) => {
       className={`mb-16 ${align === 'center' ? 'text-center' : ''}`}
     >
       <motion.h2
-        className="text-4xl md:text-5xl font-bold text-text mb-4"
+        className="text-4xl md:text-5xl font-bold gradient-text mb-4 terminal-text"
         whileHover={{ scale: 1.02 }}
       >
-        {title}
+        <span className="text-accent">{'<'}</span>{title}<span className="text-accent">{'/>'}</span>
       </motion.h2>
       <motion.div
         initial={{ width: 0 }}
         whileInView={{ width: 100 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8, delay: 0.2 }}
-        className={`h-1 bg-accent ${align === 'center' ? 'mx-auto' : ''}`}
+        className={`h-1 bg-gradient-to-r from-accent to-cyber-blue neon-glow ${align === 'center' ? 'mx-auto' : ''}`}
       />
       {subtitle && (
         <motion.p

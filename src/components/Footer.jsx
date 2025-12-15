@@ -43,9 +43,6 @@ const Footer = () => {
             transition={{ delay: 0.4 }}
             className="text-center space-y-2"
           >
-            <p className="text-text/70 flex items-center gap-2 justify-center">
-              Built with using React & TailwindCSS
-            </p>
             <p className="text-text/50 text-sm">
               © {new Date().getFullYear()} Mahfuz. All rights reserved.
             </p>

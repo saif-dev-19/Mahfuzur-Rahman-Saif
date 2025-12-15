@@ -1,5 +1,13 @@
 {
+  "functions": {
+    "netlify/functions/contact.js": {
+      "runtime": "nodejs18.x"
+    }
+  },
   "rewrites": [
-    { "source": "/(.*)", "destination": "/" }
+    {
+      "source": "/.netlify/functions/(.*)",
+      "destination": "/api/$1"
+    }
   ]
 }

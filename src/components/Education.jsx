@@ -53,27 +53,34 @@ const Education = () => {
   };
 
   return (
-    <section id="education" className="py-20 bg-secondary/30">
+    <section id="education" className="py-20 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionTitle
           title="Education"
           subtitle="Academic background and achievements"
         />
 
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-100px' }}
-          className="space-y-8"
-        >
-          {education.map((edu, index) => (
+        <div className="code-section p-8">
+          <div className="line-numbers">
+            {Array.from({ length: 12 }, (_, i) => (
+              <div key={i}>{i + 1}</div>
+            ))}
+          </div>
+          <div className="ml-12">
             <motion.div
-              key={edu.degree}
-              variants={itemVariants}
-              whileHover={{ scale: 1.02, x: 10 }}
-              className="bg-secondary rounded-xl p-8 border border-accent/20 hover:border-accent/50 transition-all duration-300"
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-100px' }}
+              className="space-y-6"
             >
+          {education.map((edu, index) => (
+              <motion.div
+                key={edu.degree}
+                variants={itemVariants}
+                whileHover={{ y: -2 }}
+                className="glass rounded-lg p-6 hover:glass-strong hover:neon-glow transition-all duration-300 hover-glow"
+              >
               <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-6">
                 <div className="flex items-start gap-4">
                   <motion.div
@@ -127,7 +134,9 @@ const Education = () => {
               </div>
             </motion.div>
           ))}
-        </motion.div>
+            </motion.div>
+          </div>
+        </div>
       </div>
     </section>
   );

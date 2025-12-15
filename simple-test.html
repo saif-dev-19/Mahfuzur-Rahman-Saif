@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Code Rain Test</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #0a0a0a;
+            color: white;
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        @keyframes simpleFall {
+            0% { 
+                transform: translateY(-100px);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% { 
+                transform: translateY(calc(100vh + 100px));
+                opacity: 0;
+            }
+        }
+
+        .falling-code {
+            position: absolute;
+            font-family: monospace;
+            font-size: 16px;
+            animation: simpleFall 8s linear infinite;
+        }
+
+        .indicator {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #00FF41;
+            color: #000;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            z-index: 1000;
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding-top: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="indicator">🌧️ CODE RAIN TEST</div>
+    
+    <div class="falling-code" style="left: 10%; color: #00FF41; animation-delay: 0s;">const</div>
+    <div class="falling-code" style="left: 20%; color: #4F8CFF; animation-delay: 1s;">function</div>
+    <div class="falling-code" style="left: 30%; color: #00FF41; animation-delay: 2s;">return</div>
+    <div class="falling-code" style="left: 40%; color: #4F8CFF; animation-delay: 3s;">useState</div>
+    <div class="falling-code" style="left: 50%; color: #00FF41; animation-delay: 4s;">import</div>
+    <div class="falling-code" style="left: 60%; color: #4F8CFF; animation-delay: 5s;">API</div>
+    <div class="falling-code" style="left: 70%; color: #00FF41; animation-delay: 6s;">JSON</div>
+    <div class="falling-code" style="left: 80%; color: #4F8CFF; animation-delay: 7s;">React</div>
+
+    <div class="content">
+        <h1>Code Rain Test</h1>
+        <p>You should see falling code words above this text!</p>
+        <p>Green and blue programming terms falling from top to bottom.</p>
+    </div>
+
+    <script>
+        console.log('✅ Simple test loaded');
+        console.log('🌧️ Look for falling code words: const, function, return, etc.');
+    </script>
+</body>
+</html>

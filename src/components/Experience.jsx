@@ -41,16 +41,22 @@ const Experience = () => {
   ];
 
   return (
-    <section id="experience" className="py-20 bg-background">
+    <section id="experience" className="py-20 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionTitle
           title="Work Experience"
           subtitle="My professional journey in software development"
         />
 
-        <div className="relative">
-          {/* Timeline Line */}
-          <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-accent/30" />
+        <div className="code-section p-8">
+          <div className="line-numbers">
+            {Array.from({ length: 15 }, (_, i) => (
+              <div key={i}>{i + 1}</div>
+            ))}
+          </div>
+          <div className="ml-12 relative">
+            {/* Timeline Line */}
+            <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-accent/30 neon-glow" />
 
           <div className="space-y-12">
             {experiences.map((exp, index) => (
@@ -107,6 +113,7 @@ const Experience = () => {
                 </motion.div>
               </motion.div>
             ))}
+            </div>
           </div>
         </div>
       </div>
