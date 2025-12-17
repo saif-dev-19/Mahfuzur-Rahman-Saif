@@ -254,7 +254,7 @@ const Contact = () => {
                       </>
                     ) : (
                       <>
-                        <Send size={18} />
+                        <Send size={14} />
                         <span className="code-comment">// </span>
                         sendMessage()
                       </>
