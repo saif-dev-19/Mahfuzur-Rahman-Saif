@@ -18,43 +18,10 @@ const Contact = () => {
     setIsSubmitting(true);
     setSubmitStatus(null);
 
-    try {
-      // Try multiple endpoints for better compatibility
-      let response;
-      
-      // First try Vercel API
+    // Simulate form processing delay for better UX
+    setTimeout(() => {
       try {
-        response = await fetch('/api/contact', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            name: formData.name,
-            email: formData.email,
-            message: formData.message,
-          }),
-        });
-      } catch (vercelError) {
-        // If Vercel fails, try Netlify function
-        response = await fetch('/.netlify/functions/contact', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            name: formData.name,
-            email: formData.email,
-            message: formData.message,
-          }),
-        });
-      }
-
-      if (response && response.ok) {
-        setSubmitStatus('success');
-        setFormData({ name: '', email: '', message: '' });
-      } else {
-        // Fallback: Create mailto link
+        // Create mailto link with form data
         const subject = encodeURIComponent(`Portfolio Contact from ${formData.name}`);
         const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`);
         const mailtoLink = `mailto:mahfujurrahmansaif@gmail.com?subject=${subject}&body=${body}`;
@@ -62,20 +29,13 @@ const Contact = () => {
         window.open(mailtoLink, '_blank');
         setSubmitStatus('success');
         setFormData({ name: '', email: '', message: '' });
+      } catch (error) {
+        console.error('Contact form error:', error);
+        setSubmitStatus('error');
+      } finally {
+        setIsSubmitting(false);
       }
-    } catch (error) {
-      console.error('Contact form error:', error);
-      // Fallback: Create mailto link
-      const subject = encodeURIComponent(`Portfolio Contact from ${formData.name}`);
-      const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`);
-      const mailtoLink = `mailto:mahfujurrahmansaif@gmail.com?subject=${subject}&body=${body}`;
-      
-      window.open(mailtoLink, '_blank');
-      setSubmitStatus('success');
-      setFormData({ name: '', email: '', message: '' });
-    } finally {
-      setIsSubmitting(false);
-    }
+    }, 1000);
   };
 
   const handleChange = (e) => {
