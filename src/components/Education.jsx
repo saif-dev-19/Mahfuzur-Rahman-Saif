@@ -53,70 +53,70 @@ const Education = () => {
   };
 
   return (
-    <section id="education" className="py-20 relative">
+    <section id="education" className="py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionTitle
           title="Education"
           subtitle="Academic background and achievements"
         />
 
-        <div className="code-section p-8">
-          <div className="line-numbers">
+        <div className="code-section p-4 sm:p-6 md:p-8">
+          <div className="line-numbers hidden sm:block">
             {Array.from({ length: 12 }, (_, i) => (
               <div key={i}>{i + 1}</div>
             ))}
           </div>
-          <div className="ml-12">
+          <div className="sm:ml-12">
             <motion.div
               variants={containerVariants}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: '-100px' }}
-              className="space-y-6"
+              className="space-y-4 sm:space-y-6"
             >
           {education.map((edu, index) => (
               <motion.div
                 key={edu.degree}
                 variants={itemVariants}
                 whileHover={{ y: -2 }}
-                className="glass rounded-lg p-6 hover:glass-strong hover:neon-glow transition-all duration-300 hover-glow"
+                className="glass rounded-lg p-4 sm:p-6 hover:glass-strong hover:neon-glow transition-all duration-300 hover-glow"
               >
-              <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-6">
-                <div className="flex items-start gap-4">
+              <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4 sm:mb-6">
+                <div className="flex items-start gap-3 sm:gap-4 min-w-0">
                   <motion.div
                     whileHover={{ rotate: 360 }}
                     transition={{ duration: 0.6 }}
-                    className="p-3 bg-accent/10 rounded-lg flex-shrink-0"
+                    className="p-2 sm:p-3 bg-accent/10 rounded-lg flex-shrink-0"
                   >
-                    <GraduationCap className="text-accent" size={32} />
+                    <GraduationCap className="text-accent" size={24} />
                   </motion.div>
-                  <div>
-                    <h3 className="text-2xl font-bold text-text mb-2">{edu.degree}</h3>
-                    <div className="flex items-center gap-2 text-text/80 mb-1">
-                      <BookOpen size={16} className="text-accent" />
-                      <span className="font-medium">{edu.institution}</span>
+                  <div className="min-w-0 flex-1">
+                    <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-text mb-2 break-words">{edu.degree}</h3>
+                    <div className="flex items-start gap-2 text-text/80 mb-1">
+                      <BookOpen size={14} className="text-accent flex-shrink-0 mt-0.5" />
+                      <span className="font-medium text-sm sm:text-base break-words">{edu.institution}</span>
                     </div>
-                    <p className="text-text/60 text-sm">{edu.location}</p>
+                    <p className="text-text/60 text-xs sm:text-sm break-words">{edu.location}</p>
                   </div>
                 </div>
 
-                <div className="flex flex-col items-start md:items-end gap-2">
+                <div className="flex flex-col items-start md:items-end gap-2 flex-shrink-0">
                   <div className="flex items-center gap-2 text-accent">
-                    <Calendar size={16} />
-                    <span className="text-sm font-medium">{edu.period}</span>
+                    <Calendar size={14} className="flex-shrink-0" />
+                    <span className="text-xs sm:text-sm font-medium whitespace-nowrap">{edu.period}</span>
                   </div>
                   <div className="flex items-center gap-2 text-text/70">
-                    <Award size={16} className="text-accent" />
-                    <span className="text-sm font-medium">GPA: {edu.gpa}</span>
+                    <Award size={14} className="text-accent flex-shrink-0" />
+                    <span className="text-xs sm:text-sm font-medium whitespace-nowrap">GPA: {edu.gpa}</span>
                   </div>
                 </div>
               </div>
 
-              <p className="text-text/70 mb-4">{edu.description}</p>
+              <p className="text-text/70 mb-4 text-sm sm:text-base break-words">{edu.description}</p>
 
               <div className="space-y-2">
-                <h4 className="text-accent font-semibold text-sm mb-3">Key Highlights:</h4>
-                <ul className="space-y-2">
+                <h4 className="text-accent font-semibold text-xs sm:text-sm mb-2 sm:mb-3">Key Highlights:</h4>
+                <ul className="space-y-1.5 sm:space-y-2">
                   {edu.highlights.map((highlight, i) => (
                     <motion.li
                       key={i}
@@ -124,10 +124,10 @@ const Education = () => {
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: i * 0.1 }}
-                      className="flex items-start gap-3 text-text/70 text-sm"
+                      className="flex items-start gap-2 sm:gap-3 text-text/70 text-xs sm:text-sm"
                     >
-                      <span className="text-accent mt-1 flex-shrink-0">▹</span>
-                      <span>{highlight}</span>
+                      <span className="text-accent mt-0.5 sm:mt-1 flex-shrink-0">▹</span>
+                      <span className="break-words">{highlight}</span>
                     </motion.li>
                   ))}
                 </ul>

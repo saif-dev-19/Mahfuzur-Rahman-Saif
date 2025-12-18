@@ -95,7 +95,7 @@ const Certificates = () => {
   };
 
   return (
-    <section id="certificates" className="py-20 bg-background">
+    <section id="certificates" className="py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionTitle
           title="Certifications"
@@ -107,7 +107,7 @@ const Certificates = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-100px' }}
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
         >
           {certificates.map((cert, index) => (
             <motion.div
@@ -115,10 +115,10 @@ const Certificates = () => {
               variants={itemVariants}
               whileHover={{ y: -10, scale: 1.02 }}
               onClick={() => setSelectedCert(cert)}
-              className="bg-secondary rounded-xl overflow-hidden border border-accent/20 hover:border-accent/50 transition-all duration-300 cursor-pointer group"
+              className="bg-secondary rounded-xl overflow-hidden border border-accent/20 hover:border-accent/50 transition-all duration-300 cursor-pointer group flex flex-col"
             >
               {/* Certificate Image */}
-              <div className="relative h-48 bg-gradient-to-br from-accent/20 to-accent/5 overflow-hidden">
+              <div className="relative h-40 sm:h-48 bg-gradient-to-br from-accent/20 to-accent/5 overflow-hidden flex-shrink-0">
                 <img
                   src={cert.image}
                   alt={cert.title}
@@ -131,35 +131,35 @@ const Certificates = () => {
                 />
                 {/* Fallback placeholder */}
                 <div className="absolute inset-0 hidden items-center justify-center bg-secondary/80 backdrop-blur-sm">
-                  <Award className="text-accent" size={64} />
+                  <Award className="text-accent" size={48} />
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-secondary to-transparent opacity-60" />
                 <motion.div
                   whileHover={{ scale: 1.1 }}
-                  className="absolute top-4 right-4 p-2 bg-accent rounded-full"
+                  className="absolute top-2 sm:top-4 right-2 sm:right-4 p-1.5 sm:p-2 bg-accent rounded-full"
                 >
-                  <Award className="text-white" size={20} />
+                  <Award className="text-white" size={16} />
                 </motion.div>
               </div>
 
               {/* Certificate Info */}
-              <div className="p-6 space-y-3">
-                <h3 className="text-lg font-bold text-text group-hover:text-accent transition-colors line-clamp-2">
+              <div className="p-4 sm:p-6 space-y-2 sm:space-y-3 flex-1 flex flex-col">
+                <h3 className="text-sm sm:text-base md:text-lg font-bold text-text group-hover:text-accent transition-colors line-clamp-2 break-words">
                   {cert.title}
                 </h3>
-                <div className="flex items-center gap-2 text-text/70 text-sm">
-                  <Building size={14} className="text-accent" />
-                  <span>{cert.issuer}</span>
+                <div className="flex items-start gap-2 text-text/70 text-xs sm:text-sm min-w-0">
+                  <Building size={12} className="text-accent flex-shrink-0 mt-0.5" />
+                  <span className="break-words">{cert.issuer}</span>
                 </div>
-                <div className="flex items-center gap-2 text-text/60 text-sm">
-                  <Calendar size={14} className="text-accent" />
-                  <span>{cert.date}</span>
+                <div className="flex items-center gap-2 text-text/60 text-xs sm:text-sm">
+                  <Calendar size={12} className="text-accent flex-shrink-0" />
+                  <span className="whitespace-nowrap">{cert.date}</span>
                 </div>
-                <div className="flex flex-wrap gap-2 pt-2">
+                <div className="flex flex-wrap gap-1.5 sm:gap-2 pt-2 mt-auto">
                   {cert.skills.slice(0, 3).map((skill) => (
                     <span
                       key={skill}
-                      className="px-2 py-1 bg-background text-accent text-xs rounded border border-accent/30"
+                      className="px-1.5 sm:px-2 py-0.5 sm:py-1 bg-background text-accent text-xs rounded border border-accent/30 whitespace-nowrap"
                     >
                       {skill}
                     </span>
@@ -186,22 +186,22 @@ const Certificates = () => {
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.9, y: 20 }}
               onClick={(e) => e.stopPropagation()}
-              className="bg-secondary rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto border border-accent/30 shadow-2xl"
+              className="bg-secondary rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto border border-accent/30 shadow-2xl m-4"
             >
               {/* Close Button */}
-              <div className="sticky top-0 bg-secondary/95 backdrop-blur-sm border-b border-accent/20 p-4 flex justify-between items-center z-10">
-                <h2 className="text-2xl font-bold text-text">Certificate Details</h2>
+              <div className="sticky top-0 bg-secondary/95 backdrop-blur-sm border-b border-accent/20 p-4 flex justify-between items-center gap-4 z-10">
+                <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-text break-words">Certificate Details</h2>
                 <motion.button
                   whileHover={{ scale: 1.1, rotate: 90 }}
                   whileTap={{ scale: 0.9 }}
                   onClick={() => setSelectedCert(null)}
-                  className="p-2 bg-accent/10 hover:bg-accent/20 rounded-lg text-accent transition-colors"
+                  className="p-2 bg-accent/10 hover:bg-accent/20 rounded-lg text-accent transition-colors flex-shrink-0"
                 >
-                  <X size={24} />
+                  <X size={20} className="sm:w-6 sm:h-6" />
                 </motion.button>
               </div>
 
-              <div className="p-6 space-y-6">
+              <div className="p-4 sm:p-6 space-y-4 sm:space-y-6">
                 {/* Certificate Image */}
                 <div className="relative rounded-xl overflow-hidden border border-accent/30">
                   <img
@@ -214,46 +214,46 @@ const Certificates = () => {
                     }}
                   />
                   {/* Fallback */}
-                  <div className="hidden w-full h-64 items-center justify-center bg-gradient-to-br from-accent/20 to-accent/5">
-                    <Award className="text-accent" size={96} />
+                  <div className="hidden w-full h-48 sm:h-64 items-center justify-center bg-gradient-to-br from-accent/20 to-accent/5">
+                    <Award className="text-accent" size={64} />
                   </div>
                 </div>
 
                 {/* Certificate Details */}
-                <div className="space-y-4">
-                  <h3 className="text-3xl font-bold text-text">{selectedCert.title}</h3>
+                <div className="space-y-3 sm:space-y-4">
+                  <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-text break-words">{selectedCert.title}</h3>
                   
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div className="flex items-center gap-3 p-3 bg-background rounded-lg">
-                      <Building className="text-accent" size={20} />
-                      <div>
+                  <div className="grid sm:grid-cols-2 gap-3 sm:gap-4">
+                    <div className="flex items-start gap-2 sm:gap-3 p-3 bg-background rounded-lg min-w-0">
+                      <Building className="text-accent flex-shrink-0 mt-0.5" size={18} />
+                      <div className="min-w-0 flex-1">
                         <p className="text-text/60 text-xs">Issued By</p>
-                        <p className="text-text font-medium">{selectedCert.issuer}</p>
+                        <p className="text-text font-medium text-sm sm:text-base break-words">{selectedCert.issuer}</p>
                       </div>
                     </div>
-                    <div className="flex items-center gap-3 p-3 bg-background rounded-lg">
-                      <Calendar className="text-accent" size={20} />
-                      <div>
+                    <div className="flex items-start gap-2 sm:gap-3 p-3 bg-background rounded-lg min-w-0">
+                      <Calendar className="text-accent flex-shrink-0 mt-0.5" size={18} />
+                      <div className="min-w-0 flex-1">
                         <p className="text-text/60 text-xs">Issue Date</p>
-                        <p className="text-text font-medium">{selectedCert.date}</p>
+                        <p className="text-text font-medium text-sm sm:text-base whitespace-nowrap">{selectedCert.date}</p>
                       </div>
                     </div>
                   </div>
 
-                  <div className="p-4 bg-background rounded-lg">
+                  <div className="p-3 sm:p-4 bg-background rounded-lg">
                     <p className="text-text/60 text-xs mb-1">Credential ID</p>
-                    <p className="text-text font-mono">{selectedCert.credentialId}</p>
+                    <p className="text-text font-mono text-xs sm:text-sm break-all">{selectedCert.credentialId}</p>
                   </div>
 
-                  <p className="text-text/70 leading-relaxed">{selectedCert.description}</p>
+                  <p className="text-text/70 leading-relaxed text-sm sm:text-base break-words">{selectedCert.description}</p>
 
                   <div>
-                    <h4 className="text-accent font-semibold mb-3">Skills Covered:</h4>
-                    <div className="flex flex-wrap gap-2">
+                    <h4 className="text-accent font-semibold mb-2 sm:mb-3 text-sm sm:text-base">Skills Covered:</h4>
+                    <div className="flex flex-wrap gap-1.5 sm:gap-2">
                       {selectedCert.skills.map((skill) => (
                         <span
                           key={skill}
-                          className="px-4 py-2 bg-accent/10 text-accent rounded-lg border border-accent/30 font-medium"
+                          className="px-2 sm:px-3 md:px-4 py-1 sm:py-1.5 md:py-2 bg-accent/10 text-accent rounded-lg border border-accent/30 font-medium text-xs sm:text-sm whitespace-nowrap"
                         >
                           {skill}
                         </span>
@@ -267,10 +267,10 @@ const Certificates = () => {
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-accent text-white rounded-lg font-medium hover:bg-accent/90 transition-colors"
+                    className="inline-flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-accent text-white rounded-lg font-medium hover:bg-accent/90 transition-colors text-sm sm:text-base whitespace-nowrap"
                   >
-                    <ExternalLink size={20} />
-                    Verify Certificate
+                    <ExternalLink size={18} className="flex-shrink-0" />
+                    <span>Verify Certificate</span>
                   </motion.a>
                 </div>
               </div>

@@ -95,48 +95,48 @@ const Skills = () => {
   };
 
   return (
-    <section id="skills" className="py-20 bg-background">
+    <section id="skills" className="py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionTitle
           title="Skills & Expertise"
           subtitle="Technologies and tools I work with to build robust solutions"
         />
 
-        <div className="code-section p-8">
-          <div className="line-numbers">
+        <div className="code-section p-4 sm:p-6 md:p-8">
+          <div className="line-numbers hidden sm:block">
             {Array.from({ length: 20 }, (_, i) => (
               <div key={i}>{i + 1}</div>
             ))}
           </div>
-          <div className="ml-12">
+          <div className="sm:ml-12">
             <motion.div
               variants={containerVariants}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: '-100px' }}
-              className="grid md:grid-cols-2 lg:grid-cols-3 gap-4"
+              className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4"
             >
               {skillCategories.map((category, index) => (
                 <motion.div
                   key={category.title}
                   variants={itemVariants}
                   whileHover={{ y: -3 }}
-                  className="glass rounded-lg p-4 hover:glass-strong hover:neon-glow transition-all duration-300 group hover-glow"
+                  className="glass rounded-lg p-3 md:p-4 hover:glass-strong hover:neon-glow transition-all duration-300 group hover-glow"
                 >
-                  <div className="flex items-center gap-3 mb-4">
+                  <div className="flex items-center gap-2 md:gap-3 mb-3 md:mb-4">
                     <motion.div
                       whileHover={{ rotate: 15 }}
                       transition={{ duration: 0.3 }}
-                      className={`p-2 rounded-md bg-gradient-to-br ${category.color} shadow-lg`}
+                      className={`p-1.5 md:p-2 rounded-md bg-gradient-to-br ${category.color} shadow-lg flex-shrink-0`}
                     >
-                      <category.icon className="text-white" size={18} />
+                      <category.icon className="text-white" size={16} />
                     </motion.div>
-                    <h3 className="text-lg font-semibold terminal-text">
+                    <h3 className="text-base md:text-lg font-semibold terminal-text break-words">
                       <span className="code-comment">// </span>
                       <span className="code-tag">{category.title}</span>
                     </h3>
                   </div>
-                  <div className="space-y-2">
+                  <div className="space-y-1.5 md:space-y-2">
                     {category.skills.map((skill, skillIndex) => (
                       <motion.div
                         key={skill.name}
@@ -145,21 +145,21 @@ const Skills = () => {
                         viewport={{ once: true }}
                         transition={{ delay: skillIndex * 0.05 }}
                         whileHover={{ x: 3 }}
-                        className="flex items-center gap-3 p-2 rounded-md bg-background/30 hover:bg-accent/10 transition-all duration-200 cursor-default"
+                        className="flex items-center gap-2 md:gap-3 p-1.5 md:p-2 rounded-md bg-background/30 hover:bg-accent/10 transition-all duration-200 cursor-default"
                       >
                         <img 
                           src={skill.iconUrl} 
                           alt={skill.name}
-                          className="skill-icon"
+                          className="skill-icon flex-shrink-0"
                           onError={(e) => {
                             e.target.style.display = 'none';
                             e.target.nextSibling.style.display = 'inline-block';
                           }}
                         />
-                        <span className="w-6 h-6 hidden bg-accent/20 rounded text-accent text-xs flex items-center justify-center">
+                        <span className="w-5 h-5 md:w-6 md:h-6 hidden bg-accent/20 rounded text-accent text-xs flex items-center justify-center flex-shrink-0">
                           {skill.name.charAt(0)}
                         </span>
-                        <span className="text-text/90 font-medium text-sm terminal-text">{skill.name}</span>
+                        <span className="text-text/90 font-medium text-xs md:text-sm terminal-text break-words">{skill.name}</span>
                       </motion.div>
                     ))}
                   </div>

@@ -151,19 +151,19 @@ const Projects = () => {
           subtitle="Showcasing my work in backend systems and full-stack applications"
         />
 
-        <div className="code-section p-8">
-          <div className="line-numbers">
+        <div className="code-section p-4 sm:p-6 md:p-8">
+          <div className="line-numbers hidden sm:block">
             {Array.from({ length: showAllProjects ? 25 : 15 }, (_, i) => (
               <div key={i}>{i + 1}</div>
             ))}
           </div>
-          <div className="ml-12">
+          <div className="sm:ml-12">
             <motion.div
               key={showAllProjects ? 'all-projects' : 'featured-projects'}
               variants={containerVariants}
               initial="hidden"
               animate="visible"
-              className="grid md:grid-cols-2 lg:grid-cols-3 gap-4"
+              className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4"
             >
               {displayedProjects.map((project, index) => (
                 <motion.div
@@ -172,18 +172,18 @@ const Projects = () => {
                   variants={cardVariants}
                   whileHover={{ y: -2, scale: 1.01 }}
                   onClick={() => setSelectedProject(project)}
-                  className="glass rounded-lg overflow-hidden hover:glass-strong hover:neon-glow transition-all duration-300 group cursor-pointer hover-glow"
+                  className="glass rounded-lg overflow-hidden hover:glass-strong hover:neon-glow transition-all duration-300 group cursor-pointer hover-glow flex flex-col"
                 >
                   {/* Project Image */}
-                  <div className="relative h-32 bg-gradient-to-br from-accent/20 to-accent/5 overflow-hidden">
+                  <div className="relative h-28 sm:h-32 bg-gradient-to-br from-accent/20 to-accent/5 overflow-hidden flex-shrink-0">
                     <img
                       src={project.image}
                       alt={project.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      className="w-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                     <div className="absolute top-2 right-2">
-                      <span className={`px-2 py-1 text-xs rounded-md font-medium terminal-text ${
+                      <span className={`px-1.5 sm:px-2 py-0.5 sm:py-1 text-xs rounded-md font-medium terminal-text whitespace-nowrap ${
                         project.status === 'Completed' 
                           ? 'bg-green-500/20 text-green-400 border border-green-500/30' 
                           : 'bg-blue-500/20 text-blue-400 border border-blue-500/30'
@@ -194,30 +194,30 @@ const Projects = () => {
                   </div>
 
                   {/* Project Content */}
-                  <div className="p-4 space-y-2">
-                    <h3 className="text-base font-semibold text-text group-hover:text-accent transition-colors terminal-text line-clamp-1">
+                  <div className="p-3 sm:p-4 space-y-2 flex-1 flex flex-col">
+                    <h3 className="text-sm sm:text-base font-semibold text-text group-hover:text-accent transition-colors terminal-text line-clamp-2 break-words">
                       <span className="code-tag">const</span> {project.title.split(' ')[0]} = <span className="code-comment">{"{"}</span>
                     </h3>
-                    <p className="text-text/70 text-xs leading-relaxed line-clamp-2">
+                    <p className="text-text/70 text-xs leading-relaxed line-clamp-2 break-words flex-1">
                       {project.description}
                     </p>
 
                     {/* Tech Stack - Real Icons */}
                     <div className="flex flex-wrap gap-1 pt-1">
                       {project.tech.slice(0, 4).map((tech, i) => (
-                        <span key={i} className="px-2 py-1 bg-accent/10 text-accent text-xs rounded border border-accent/20 terminal-text">
+                        <span key={i} className="px-1.5 sm:px-2 py-0.5 sm:py-1 bg-accent/10 text-accent text-xs rounded border border-accent/20 terminal-text whitespace-nowrap">
                           {tech}
                         </span>
                       ))}
                       {project.tech.length > 4 && (
-                        <span className="px-2 py-1 bg-accent/10 text-accent text-xs rounded border border-accent/20">
+                        <span className="px-1.5 sm:px-2 py-0.5 sm:py-1 bg-accent/10 text-accent text-xs rounded border border-accent/20 whitespace-nowrap">
                           +{project.tech.length - 4}
                         </span>
                       )}
                     </div>
 
                     {/* Links */}
-                    <div className="flex gap-2 pt-1">
+                    <div className="flex flex-wrap gap-1.5 sm:gap-2 pt-1">
                       <motion.button
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
@@ -225,9 +225,9 @@ const Projects = () => {
                           e.stopPropagation();
                           setSelectedProject(project);
                         }}
-                        className="flex items-center gap-1 text-text/70 hover:text-accent transition-colors text-xs bg-accent/10 px-2 py-1 rounded border border-accent/20 hover:bg-accent/20"
+                        className="flex items-center gap-1 text-text/70 hover:text-accent transition-colors text-xs bg-accent/10 px-1.5 sm:px-2 py-1 rounded border border-accent/20 hover:bg-accent/20 whitespace-nowrap"
                       >
-                        <Info size={12} />
+                        <Info size={12} className="flex-shrink-0" />
                         <span>Details</span>
                       </motion.button>
                       <motion.a
@@ -237,9 +237,9 @@ const Projects = () => {
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         onClick={(e) => e.stopPropagation()}
-                        className="flex items-center gap-1 text-text/70 hover:text-accent transition-colors text-xs"
+                        className="flex items-center gap-1 text-text/70 hover:text-accent transition-colors text-xs whitespace-nowrap"
                       >
-                        <Github size={12} />
+                        <Github size={12} className="flex-shrink-0" />
                         <span>Code</span>
                       </motion.a>
                       <motion.a
@@ -249,9 +249,9 @@ const Projects = () => {
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         onClick={(e) => e.stopPropagation()}
-                        className="flex items-center gap-1 text-text/70 hover:text-accent transition-colors text-xs"
+                        className="flex items-center gap-1 text-text/70 hover:text-accent transition-colors text-xs whitespace-nowrap"
                       >
-                        <ExternalLink size={12} />
+                        <ExternalLink size={12} className="flex-shrink-0" />
                         <span>Live</span>
                       </motion.a>
                     </div>
@@ -316,14 +316,14 @@ const Projects = () => {
                 animate={{ scale: 1, y: 0 }}
                 exit={{ scale: 0.9, y: 20 }}
                 onClick={(e) => e.stopPropagation()}
-                className="glass-strong rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto neon-glow-strong"
+                className="glass-strong rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto neon-glow-strong m-4"
               >
                 {/* Modal Header */}
-                <div className="sticky top-0 glass-strong border-b border-accent/20 p-6 flex justify-between items-center z-10">
-                  <div>
-                    <h2 className="text-2xl font-bold gradient-text terminal-text">{selectedProject.title}</h2>
-                    <div className="flex items-center gap-4 mt-2">
-                      <span className={`px-3 py-1 text-sm rounded-full font-medium ${
+                <div className="sticky top-0 glass-strong border-b border-accent/20 p-4 sm:p-6 flex justify-between items-start gap-4 z-10">
+                  <div className="flex-1 min-w-0">
+                    <h2 className="text-lg sm:text-xl md:text-2xl font-bold gradient-text terminal-text break-words">{selectedProject.title}</h2>
+                    <div className="flex flex-wrap items-center gap-2 sm:gap-4 mt-2">
+                      <span className={`px-2 sm:px-3 py-0.5 sm:py-1 text-xs sm:text-sm rounded-full font-medium whitespace-nowrap ${
                         selectedProject.status === 'Completed' 
                           ? 'bg-terminal-green/20 text-terminal-green border border-terminal-green/30' 
                           : 'bg-cyber-blue/20 text-cyber-blue border border-cyber-blue/30'
@@ -331,8 +331,8 @@ const Projects = () => {
                         {selectedProject.status}
                       </span>
                       <div className="flex items-center gap-2 text-text/60">
-                        <Calendar size={16} />
-                        <span className="text-sm">{selectedProject.duration}</span>
+                        <Calendar size={14} className="flex-shrink-0" />
+                        <span className="text-xs sm:text-sm whitespace-nowrap">{selectedProject.duration}</span>
                       </div>
                     </div>
                   </div>
@@ -340,22 +340,22 @@ const Projects = () => {
                     whileHover={{ scale: 1.1, rotate: 90 }}
                     whileTap={{ scale: 0.9 }}
                     onClick={() => setSelectedProject(null)}
-                    className="p-2 glass rounded-lg text-accent hover:neon-glow transition-all duration-300"
+                    className="p-2 glass rounded-lg text-accent hover:neon-glow transition-all duration-300 flex-shrink-0"
                   >
-                    <X size={24} />
+                    <X size={20} className="sm:w-6 sm:h-6" />
                   </motion.button>
                 </div>
 
-                <div className="p-6 space-y-6">
+                <div className="p-4 sm:p-6 space-y-4 sm:space-y-6">
                   {/* Project Image Gallery */}
                   <div className="relative rounded-xl overflow-hidden border border-accent/30 neon-glow">
                     <img
                       src={selectedProject.image}
                       alt={selectedProject.title}
-                      className="w-full h-64 object-cover"
+                      className="w-full h-100 md:h-100 object-cover"
                     />
-                    <div className="absolute bottom-4 right-4 glass px-3 py-1 rounded-md">
-                      <span className="text-xs terminal-text text-accent">
+                    <div className="absolute bottom-2 sm:bottom-4 right-2 sm:right-4 glass px-2 sm:px-3 py-1 rounded-md">
+                      <span className="text-xs terminal-text text-accent whitespace-nowrap">
                         <span className="code-comment">// </span>
                         screenshot.png
                       </span>
@@ -363,31 +363,31 @@ const Projects = () => {
                   </div>
 
                   {/* Project Details */}
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div className="space-y-4">
-                      <h3 className="text-xl font-bold terminal-text">
+                  <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
+                    <div className="space-y-3 sm:space-y-4">
+                      <h3 className="text-lg sm:text-xl font-bold terminal-text break-words">
                         <span className="code-comment">/* </span>
                         <span className="code-tag">Project Overview</span>
                         <span className="code-comment"> */</span>
                       </h3>
-                      <div className="glass p-4 rounded-lg">
-                        <p className="text-text/80 leading-relaxed terminal-text text-sm">
+                      <div className="glass p-3 sm:p-4 rounded-lg">
+                        <p className="text-text/80 leading-relaxed terminal-text text-xs sm:text-sm break-words">
                           {selectedProject.fullDescription}
                         </p>
                       </div>
                       
                       <div>
-                        <h4 className="text-lg font-semibold terminal-text mb-3">
+                        <h4 className="text-base sm:text-lg font-semibold terminal-text mb-2 sm:mb-3 break-words">
                           <span className="code-comment">// </span>
                           <span className="code-tag">features</span>
                           <span className="text-accent">[]</span>
                         </h4>
-                        <div className="glass p-4 rounded-lg">
-                          <ul className="space-y-2">
+                        <div className="glass p-3 sm:p-4 rounded-lg">
+                          <ul className="space-y-1.5 sm:space-y-2">
                             {selectedProject.features?.map((feature, i) => (
-                              <li key={i} className="flex items-start gap-2 text-text/70 text-sm">
-                                <span className="text-green-400 mt-1 terminal-text">✓</span>
-                                <span className="terminal-text">{feature}</span>
+                              <li key={i} className="flex items-start gap-2 text-text/70 text-xs sm:text-sm">
+                                <span className="text-green-400 mt-0.5 sm:mt-1 terminal-text flex-shrink-0">✓</span>
+                                <span className="terminal-text break-words">{feature}</span>
                               </li>
                             ))}
                           </ul>
@@ -395,39 +395,39 @@ const Projects = () => {
                       </div>
                     </div>
 
-                    <div className="space-y-4">
-                      <h3 className="text-xl font-bold terminal-text">
+                    <div className="space-y-3 sm:space-y-4">
+                      <h3 className="text-lg sm:text-xl font-bold terminal-text break-words">
                         <span className="code-comment">// </span>
                         <span className="code-tag">techStack</span>
                         <span className="text-accent">{`{}`}</span>
                       </h3>
-                      <div className="glass p-4 rounded-lg">
-                        <div className="grid grid-cols-1 gap-2">
+                      <div className="glass p-3 sm:p-4 rounded-lg">
+                        <div className="grid grid-cols-1 gap-1.5 sm:gap-2">
                           {selectedProject.tech.map((tech, i) => (
-                            <div key={tech} className="flex items-center gap-3 p-2 bg-background/30 rounded-md hover:bg-accent/10 transition-colors">
-                              <div className="w-6 h-6 bg-accent/20 rounded flex items-center justify-center">
+                            <div key={tech} className="flex items-center gap-2 sm:gap-3 p-1.5 sm:p-2 bg-background/30 rounded-md hover:bg-accent/10 transition-colors">
+                              <div className="w-5 h-5 sm:w-6 sm:h-6 bg-accent/20 rounded flex items-center justify-center flex-shrink-0">
                                 <span className="text-accent text-xs font-bold">
                                   {tech.charAt(0)}
                                 </span>
                               </div>
-                              <span className="text-text/90 font-medium terminal-text text-sm">{tech}</span>
+                              <span className="text-text/90 font-medium terminal-text text-xs sm:text-sm break-words">{tech}</span>
                             </div>
                           ))}
                         </div>
                       </div>
 
-                      <div className="space-y-3">
+                      <div className="space-y-2 sm:space-y-3">
                         <motion.a
                           href={selectedProject.github}
                           target="_blank"
                           rel="noopener noreferrer"
                           whileHover={{ scale: 1.02 }}
                           whileTap={{ scale: 0.98 }}
-                          className="w-full flex items-center justify-center gap-2 px-6 py-3 glass rounded-lg font-medium hover:glass-strong hover:neon-glow transition-all duration-300 terminal-text"
+                          className="w-full flex items-center justify-center gap-2 px-4 sm:px-6 py-2 sm:py-3 glass rounded-lg font-medium hover:glass-strong hover:neon-glow transition-all duration-300 terminal-text text-sm whitespace-nowrap"
                         >
-                          <Github size={18} />
+                          <Github size={16} className="flex-shrink-0" />
                           <span className="code-comment">// </span>
-                          viewSource()
+                          <span className="break-keep">viewSource()</span>
                         </motion.a>
                         <motion.a
                           href={selectedProject.live}
@@ -435,11 +435,11 @@ const Projects = () => {
                           rel="noopener noreferrer"
                           whileHover={{ scale: 1.02 }}
                           whileTap={{ scale: 0.98 }}
-                          className="w-full btn-primary flex items-center justify-center gap-2"
+                          className="w-full btn-primary flex items-center justify-center gap-2 text-sm whitespace-nowrap"
                         >
-                          <ExternalLink size={18} />
+                          <ExternalLink size={16} className="flex-shrink-0" />
                           <span className="code-comment">// </span>
-                          liveDemo()
+                          <span className="break-keep">liveDemo()</span>
                         </motion.a>
                       </div>
                     </div>

@@ -59,30 +59,30 @@ const Contact = () => {
           subtitle="Let's discuss your next project or opportunity"
         />
 
-        <div className="code-section p-8">
-          <div className="line-numbers">
+        <div className="code-section p-4 sm:p-6 md:p-8">
+          <div className="line-numbers hidden sm:block">
             {Array.from({ length: 25 }, (_, i) => (
               <div key={i}>{i + 1}</div>
             ))}
           </div>
-          <div className="ml-12">
-            <div className="grid md:grid-cols-2 gap-8">
+          <div className="sm:ml-12">
+            <div className="grid md:grid-cols-2 gap-6 md:gap-8">
               {/* Contact Info */}
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
-                className="space-y-8"
+                className="space-y-6 md:space-y-8"
               >
               <div>
-                <h3 className="text-2xl font-bold terminal-text mb-4">
+                <h3 className="text-xl sm:text-2xl font-bold terminal-text mb-3 sm:mb-4 break-words">
                   <span className="code-comment">/* </span>
                   <span className="code-tag">Let's Connect</span>
                   <span className="code-comment"> */</span>
                 </h3>
-                <div className="glass p-4 rounded-lg">
-                  <p className="text-text/70 leading-relaxed terminal-text text-sm">
+                <div className="glass p-3 sm:p-4 rounded-lg">
+                  <p className="text-text/70 leading-relaxed terminal-text text-xs sm:text-sm break-words">
                     <span className="code-comment">// </span>
                     I'm always interested in hearing about new projects and opportunities.
                     <br />
@@ -92,7 +92,7 @@ const Contact = () => {
                 </div>
               </div>
 
-              <div className="space-y-4">
+              <div className="space-y-3 sm:space-y-4">
                 {contactInfo.map((info, index) => (
                   <motion.a
                     key={info.label}
@@ -102,14 +102,14 @@ const Contact = () => {
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1 }}
                     whileHover={{ scale: 1.05, x: 10 }}
-                    className="flex items-center gap-4 p-4 glass rounded-lg hover:glass-strong hover:neon-glow transition-all duration-300"
+                    className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 glass rounded-lg hover:glass-strong hover:neon-glow transition-all duration-300"
                   >
-                    <div className="p-3 bg-accent/20 rounded-lg neon-glow">
-                      <info.icon className="text-accent" size={24} />
+                    <div className="p-2 sm:p-3 bg-accent/20 rounded-lg neon-glow flex-shrink-0">
+                      <info.icon className="text-accent" size={20} />
                     </div>
-                    <div>
-                      <p className="text-text/60 text-sm terminal-text">{info.label}</p>
-                      <p className="text-text font-medium">{info.value}</p>
+                    <div className="min-w-0 flex-1">
+                      <p className="text-text/60 text-xs sm:text-sm terminal-text">{info.label}</p>
+                      <p className="text-text font-medium text-sm sm:text-base break-all">{info.value}</p>
                     </div>
                   </motion.a>
                 ))}
@@ -123,16 +123,16 @@ const Contact = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
               >
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
               {/* Status Messages */}
               {submitStatus === 'success' && (
                 <motion.div
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="flex items-center gap-2 p-4 bg-green-500/10 border border-green-500/30 rounded-lg text-green-400"
+                  className="flex items-start gap-2 p-3 sm:p-4 bg-green-500/10 border border-green-500/30 rounded-lg text-green-400"
                 >
-                  <CheckCircle size={20} />
-                  <span>Message sent successfully! Your email client may have opened, or I'll get back to you soon.</span>
+                  <CheckCircle size={18} className="flex-shrink-0 mt-0.5" />
+                  <span className="text-xs sm:text-sm break-words">Message sent successfully! Your email client may have opened, or I'll get back to you soon.</span>
                 </motion.div>
               )}
               
@@ -140,15 +140,15 @@ const Contact = () => {
                 <motion.div
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="flex items-center gap-2 p-4 bg-red-500/10 border border-red-500/30 rounded-lg text-red-400"
+                  className="flex items-start gap-2 p-3 sm:p-4 bg-red-500/10 border border-red-500/30 rounded-lg text-red-400"
                 >
-                  <AlertCircle size={20} />
-                  <span>Failed to send message. Please try again or contact me directly.</span>
+                  <AlertCircle size={18} className="flex-shrink-0 mt-0.5" />
+                  <span className="text-xs sm:text-sm break-words">Failed to send message. Please try again or contact me directly.</span>
                 </motion.div>
               )}
 
                 <div>
-                  <label htmlFor="name" className="block text-text mb-2 font-medium terminal-text">
+                  <label htmlFor="name" className="block text-text mb-2 font-medium terminal-text text-sm sm:text-base break-words">
                     <span className="code-tag">const</span> <span className="text-accent">name</span> = <span className="code-comment">"</span>
                   </label>
                   <motion.input
@@ -159,13 +159,13 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 glass border border-accent/20 rounded-lg text-text focus:outline-none focus:border-accent focus:neon-glow transition-all duration-300 terminal-text hover-glow"
+                    className="w-full px-3 sm:px-4 py-2 sm:py-3 glass border border-accent/20 rounded-lg text-text focus:outline-none focus:border-accent focus:neon-glow transition-all duration-300 terminal-text hover-glow text-sm sm:text-base"
                     placeholder="Enter your name..."
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-text mb-2 font-medium terminal-text">
+                  <label htmlFor="email" className="block text-text mb-2 font-medium terminal-text text-sm sm:text-base break-words">
                     <span className="code-tag">const</span> <span className="text-accent">email</span> = <span className="code-comment">"</span>
                   </label>
                   <motion.input
@@ -176,13 +176,13 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 glass border border-accent/20 rounded-lg text-text focus:outline-none focus:border-accent focus:neon-glow transition-all duration-300 terminal-text hover-glow"
+                    className="w-full px-3 sm:px-4 py-2 sm:py-3 glass border border-accent/20 rounded-lg text-text focus:outline-none focus:border-accent focus:neon-glow transition-all duration-300 terminal-text hover-glow text-sm sm:text-base"
                     placeholder="your.email@example.com"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-text mb-2 font-medium terminal-text">
+                  <label htmlFor="message" className="block text-text mb-2 font-medium terminal-text text-sm sm:text-base break-words">
                     <span className="code-tag">const</span> <span className="text-accent">message</span> = <span className="code-comment">`</span>
                   </label>
                   <motion.textarea
@@ -193,46 +193,46 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                     rows="5"
-                    className="w-full px-4 py-3 glass border border-accent/20 rounded-lg text-text focus:outline-none focus:border-accent focus:neon-glow transition-all duration-300 resize-none terminal-text hover-glow"
+                    className="w-full px-3 sm:px-4 py-2 sm:py-3 glass border border-accent/20 rounded-lg text-text focus:outline-none focus:border-accent focus:neon-glow transition-all duration-300 resize-none terminal-text hover-glow text-sm sm:text-base"
                     placeholder="Type your message here..."
                   />
                 </div>
 
-                <div className="flex gap-4">
+                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                   <motion.button
                     type="submit"
                     disabled={isSubmitting}
                     whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
                     whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
-                    className={`flex-1 btn-primary ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
+                    className={`flex-1 btn-primary text-sm sm:text-base whitespace-nowrap ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
                   >
                     {isSubmitting ? (
                       <>
-                        <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                        <div className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-white/30 border-t-white rounded-full animate-spin flex-shrink-0" />
                         <span className="code-comment">// </span>
-                        sending...
+                        <span className="break-keep">sending...</span>
                       </>
                     ) : (
-                      <>
-                        <Send size={14} />
+                      <div className='flex justify-center'>
+                        <Send size={16} className="flex-shrink-0 mt-1" />
                         <span className="code-comment">// </span>
-                        sendMessage()
-                      </>
+                        <span className="break-keep">sendMessage()</span>
+                      </div>
                     )}
                   </motion.button>
 
-                  <motion.a
+                  {/* <motion.a
                     href="mailto:mahfujurrahmansaif@gmail.com?subject=Portfolio Contact&body=Hi Mahfuz,%0D%0A%0D%0AI'd like to get in touch with you.%0D%0A%0D%0ABest regards"
                     target="_blank"
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="px-6 py-3 glass border border-accent/30 rounded-lg text-accent hover:glass-strong hover:neon-glow transition-all duration-300 flex items-center gap-2 terminal-text font-medium"
+                    className="px-4 sm:px-6 py-2 sm:py-3 glass border border-accent/30 rounded-lg text-accent hover:glass-strong hover:neon-glow transition-all duration-300 flex items-center justify-center gap-2 terminal-text font-medium text-sm sm:text-base whitespace-nowrap"
                   >
-                    <Mail size={18} />
+                    <Mail size={16} className="flex-shrink-0" />
                     <span className="code-comment">// </span>
                     Direct Email
-                  </motion.a>
+                  </motion.a> */}
                 </div>
               </form>
               </motion.div>

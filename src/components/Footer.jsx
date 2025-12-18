@@ -12,11 +12,11 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-secondary border-t border-accent/20 py-12">
+    <footer className="bg-secondary border-t border-accent/20 py-8 sm:py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col items-center space-y-6">
+        <div className="flex flex-col items-center space-y-4 sm:space-y-6">
           {/* Social Links */}
-          <div className="flex gap-6">
+          <div className="flex flex-wrap justify-center gap-3 sm:gap-4 md:gap-6">
             {socialLinks.map((social, index) => (
               <motion.a
                 key={social.label}
@@ -28,10 +28,10 @@ const Footer = () => {
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ scale: 1.2, y: -5 }}
                 whileTap={{ scale: 0.9 }}
-                className="p-3 bg-background rounded-lg text-text hover:text-accent hover:bg-background/80 transition-all duration-300"
+                className="p-2 sm:p-3 bg-background rounded-lg text-text hover:text-accent hover:bg-background/80 transition-all duration-300"
                 aria-label={social.label}
               >
-                <social.icon size={24} />
+                <social.icon size={20} className="sm:w-6 sm:h-6" />
               </motion.a>
             ))}
           </div>
@@ -43,7 +43,7 @@ const Footer = () => {
             transition={{ delay: 0.4 }}
             className="text-center space-y-2"
           >
-            <p className="text-text/50 text-sm">
+            <p className="text-text/50 text-xs sm:text-sm break-words px-4">
               © {new Date().getFullYear()} Mahfuz. All rights reserved.
             </p>
           </motion.div>
@@ -53,7 +53,7 @@ const Footer = () => {
             href="#home"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
-            className="text-accent hover:text-accent/80 transition-colors text-sm font-medium"
+            className="text-accent hover:text-accent/80 transition-colors text-xs sm:text-sm font-medium whitespace-nowrap"
           >
             Back to Top ↑
           </motion.a>
